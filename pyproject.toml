@@ -1,0 +1,35 @@
+[project]
+name = "agentsbx"
+version = "0.1.0"
+description = "The secure, gVisor-isolated code execution sandbox for autonomous AI agents."
+readme = "README.md"
+authors = [
+    { name = "Ahir Barman Maji", email = "ahir.barmanmaji2004@gmail.com" }
+]
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Sort imports
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "docker: needs Docker with the gVisor runtime registered as `runsc` (auto-skipped otherwise)",
+]
